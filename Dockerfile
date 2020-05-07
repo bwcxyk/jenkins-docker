@@ -1,10 +1,7 @@
 FROM jenkins/jenkins
 
 USER root
-RUN cd /var/jenkins_home/updates \
-    && sed -i 's/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' default.json \
-    && sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' default.json \
-    && curl -O https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
+RUN curl -O https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
     && tar zxvf docker-latest.tgz \
     && cp docker/docker /usr/local/bin/ \
     && rm -rf docker docker-latest.tgz \
