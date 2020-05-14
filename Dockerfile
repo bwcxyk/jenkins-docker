@@ -1,5 +1,7 @@
 FROM jenkins/jenkins
 
+ENV JENKINS_HOME="/data/jenkins"
+
 USER root
 RUN curl -O https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
     && tar zxvf docker-latest.tgz \
