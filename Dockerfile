@@ -3,11 +3,8 @@ FROM jenkins/jenkins
 ENV JENKINS_HOME="/data/jenkins"
 
 USER root
-RUN curl -O https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
-    && tar zxvf docker-latest.tgz \
-    && cp docker/docker /usr/local/bin/ \
-    && rm -rf docker docker-latest.tgz \
-    && wget https://archive.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz \
+
+RUN wget https://archive.apache.org/dist/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz \
     && tar zxvf apache-maven-3.6.2-bin.tar.gz \
     && mv apache-maven-3.6.2 /usr/local/maven \
     && rm -f apache-maven-3.6.2-bin.tar.gz \
@@ -17,6 +14,7 @@ RUN curl -O https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
     && rm -f node-v12.13.1-linux-x64.tar.xz \
     && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
+COPY docker /usr/bin/docker
 COPY settings.xml /usr/local/maven/conf/
 
 ENV NODE_HOME="/usr/local/nodejs"
