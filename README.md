@@ -6,14 +6,16 @@ maven目录 `/usr/local/maven`
 
 nodejs目录 `/usr/local/node`
 
-```
-docker run \
-  -u root \
-  --rm \  
-  -d \ 
-  -p 8080:8080 \ 
-  -p 50000:50000 \ 
-  -v jenkins-data:/var/jenkins_home \ 
-  -v /var/run/docker.sock:/var/run/docker.sock \ 
-  yaokun/jenkins
+```bash
+docker run -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -e TZ=Asia/Shanghai \
+  -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /data/jenkins-data:/data/jenkins \
+  --restart=always \
+  --privileged=true \
+  --name jenkins \
+  yaokun/jenkins:latest
 ```

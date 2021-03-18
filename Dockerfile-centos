@@ -17,6 +17,8 @@ RUN curl -O https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
     && rm -f node-v12.13.1-linux-x64.tar.xz \
     && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
+COPY settings.xml /usr/local/maven/conf/
+
 ENV NODE_HOME="/usr/local/nodejs"
 ENV MAVEN_HOME="/usr/local/maven"
 ENV PATH=${PATH}:${NODE_HOME}/bin:$MAVEN_HOME/bin
