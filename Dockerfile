@@ -25,5 +25,4 @@ ENV NODE_HOME="/usr/local/nodejs"
 ENV MAVEN_HOME="/usr/local/maven"
 ENV PATH=${PATH}:${NODE_HOME}/bin:${MAVEN_HOME}/bin
 
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org \
-    && cnpm version
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org

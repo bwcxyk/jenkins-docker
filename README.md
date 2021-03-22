@@ -11,7 +11,7 @@ docker run -d \
   -p 8080:8080 \
   -p 50000:50000 \
   -e TZ=Asia/Shanghai \
-  -e JAVA_OPTS=-Duser.timezone=Asia/Shanghai \
+  -e JAVA_OPTS='-Dhudson.model.UpdateCenter.updateCenterUrl="https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/"' \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /data/jenkins-data:/data/jenkins \
   --restart=always \
