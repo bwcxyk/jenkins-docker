@@ -1,4 +1,4 @@
-FROM jenkins/jenkins
+FROM jenkins/jenkins:lts
 
 ENV JENKINS_HOME="/data/jenkins"
 
