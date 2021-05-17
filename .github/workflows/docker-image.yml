@@ -20,8 +20,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile-centos --tag my-image-name:$(date +%s)
-    - uses: docker/build-push-action@v2
-    - name: Log into registry
+    - name: Publish to Docker Repository
+      uses: yaokun/Publish-Docker-Github-Action@master
       with:
           publish: true
           imageName: yaokun/${IMAGE_NAME}
@@ -29,3 +29,4 @@ jobs:
           tag: centos # 默认latest，可以针对平台，修改tag
           dockerHubUser: ${{ secrets.DOCKER_USERNAME }} # docker hub userid
           dockerHubPassword: ${{ secrets.DOCKER_PASSWORD }} # docker hub password
+
