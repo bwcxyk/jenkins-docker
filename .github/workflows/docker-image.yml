@@ -17,16 +17,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile-centos --tag my-image-name:$(date +%s)
-    - name: Publish to Docker Repository
-      uses: yaokun/Publish-Docker-Github-Action@master
-      with:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile-centos --tag my-image-name:$(date +%s)
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
           publish: true
           imageName: yaokun/${IMAGE_NAME}
-          platform: linux/amd64 # 你准备构建的镜像平台
+          #repository: my-docker-hub-namespace/my-docker-hub-repository
+          #tag_with_ref: true
           tag: centos # 默认latest，可以针对平台，修改tag
-          dockerHubUser: ${{ secrets.DOCKER_USERNAME }} # docker hub userid
-          dockerHubPassword: ${{ secrets.DOCKER_PASSWORD }} # docker hub password
-
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
