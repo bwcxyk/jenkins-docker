@@ -26,6 +26,6 @@ jobs:
           publish: true
           imageName: yaokun/${IMAGE_NAME}
           platform: linux/amd64 # 你准备构建的镜像平台
-          tag: latest # 默认latest，可以针对平台，修改tag
+          tag: centos # 默认latest，可以针对平台，修改tag
           dockerHubUser: ${{ secrets.DOCKER_USERNAME }} # docker hub userid
           dockerHubPassword: ${{ secrets.DOCKER_PASSWORD }} # docker hub password
