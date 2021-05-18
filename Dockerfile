@@ -5,6 +5,7 @@ ENV JENKINS_HOME="/data/jenkins"
 USER root
 
 RUN set -x \
+    && cd /tmp \
     && curl -OL https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz \
     && tar -zxf docker-latest.tgz \
     && cp docker/docker /usr/local/bin/ \
