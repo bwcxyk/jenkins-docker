@@ -18,10 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile-centos --tag my-image-name:$(date +%s)
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
+      - name: Publish to Docker Repository
+        uses: elgohr/Publish-Docker-Github-Action@master
         with:
           publish: true
           imageName: yaokun/${IMAGE_NAME}
