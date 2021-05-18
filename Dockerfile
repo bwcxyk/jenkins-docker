@@ -16,8 +16,7 @@ RUN set -x \
     && curl -OL https://npm.taobao.org/mirrors/node/v12.13.1/node-v12.13.1-linux-x64.tar.xz \
     && tar -xf node-v12.13.1-linux-x64.tar.xz \
     && mv node-v12.13.1-linux-x64 /usr/local/nodejs \
-    && rm -f node-v12.13.1-linux-x64.tar.xz \
-    && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
+    && rm -f node-v12.13.1-linux-x64.tar.xz
 
 COPY settings.xml /usr/local/maven/conf/
 
