@@ -6,24 +6,30 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  # 设置 docker 镜像名
-  IMAGE_NAME: jenkins
 
 jobs:
-
-  build:
-
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Publish to Docker Repository
-        uses: elgohr/Publish-Docker-Github-Action@master
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
-          name: yaokun/${IMAGE_NAME}
-          #imageName: yaokun/${IMAGE_NAME}
-          #repository: yaokun/${IMAGE_NAME}
-          tag: centos # 默认latest，可以针对平台，修改tag
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: yaokun/jenkins:centos
