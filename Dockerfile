@@ -14,11 +14,11 @@ RUN set -x \
     && tar -zxf apache-maven-3.6.2-bin.tar.gz \
     && mv apache-maven-3.6.2 /usr/local/maven \
     && rm -f apache-maven-3.6.2-bin.tar.gz \
-    && curl -OL https://npm.taobao.org/mirrors/node/v12.13.1/node-v12.13.1-linux-x64.tar.xz \
+    && curl -OL https://npm.taobao.org/mirrors/node/v12.13.1/node-v12.13.1-linux-x64.tar.gz \
     && ls -lh \
-    && tar -xf node-v12.13.1-linux-x64.tar.xz \
+    && tar -zxf node-v12.13.1-linux-x64.tar.gz \
     && mv node-v12.13.1-linux-x64 /usr/local/nodejs \
-    && rm -f node-v12.22.1-linux-x64.tar.xz \
+    && rm -f node-v12.13.1-linux-x64.tar.gz \
     && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 COPY settings.xml /usr/local/maven/conf/
