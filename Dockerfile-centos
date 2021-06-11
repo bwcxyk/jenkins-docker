@@ -1,6 +1,8 @@
 FROM jenkins/jenkins:centos
 
 ENV JENKINS_HOME="/data/jenkins"
+ENV TZ=Asia/Shanghai
+ENV LANG=zh_CN.UTF-8
 
 USER root
 
