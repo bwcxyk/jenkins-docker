@@ -1,8 +1,6 @@
 FROM jenkins/jenkins:alpine
 
 ENV JENKINS_HOME="/data/jenkins"
-ENV TZ=Asia/Shanghai
-ENV LANG=zh_CN.UTF-8
 
 USER root
 
