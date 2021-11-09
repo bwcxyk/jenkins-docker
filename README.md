@@ -19,3 +19,21 @@ docker run -d \
   --name jenkins \
   yaokun/jenkins:latest
 ```
+## 插件安装慢
+进入jenkins目录
+```
+sed -i 's/https:\/\/updates.jenkins.io\/update-center.json/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins\/updates\/update-center.json/g' hudson.model.UpdateCenter.xml
+```
+进入updates目录
+```
+sed -i 's/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' default.json
+sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' default.json
+```
+重启jenkins容器
+```
+docker restart jenkins
+```
+若推送镜像时提示`Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock`
+```
+chmod 777 /var/run/docker.sock
+```
