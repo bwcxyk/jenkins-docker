@@ -20,7 +20,7 @@ RUN set -x \
     && rm -f node-v12.13.1-linux-x64.tar.gz \
     && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
-COPY settings.xml /usr/local/maven/conf/
+COPY settings.xml /usr/local/maven/conf/settings.xml
 
 ENV NODE_HOME="/usr/local/nodejs"
 ENV MAVEN_HOME="/usr/local/maven"
