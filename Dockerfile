@@ -1,4 +1,4 @@
-FROM jenkins/jenkins
+FROM jenkins/jenkins:latest-jdk8
 
 ENV JENKINS_HOME="/data/jenkins"
 
